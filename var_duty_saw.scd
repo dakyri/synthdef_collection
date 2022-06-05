@@ -1,4 +1,5 @@
 (
+// ------------- 2 (\bpmCycle) against 3 (\bpmSaw) powerstation throb thing
 SynthDef(\var_duty_saw, { arg bpmSaw=3, bpmCycle=2, freq1=100, freq2=50, atk=0.1, gate=1, amp=0.1, pbend=0, phase=0;
 	var  lfo, env;
 	lfo = 1/bpmCycle;		// freq of the modulating SinOsc  i.e 1/16, or 1/8 etc
@@ -11,3 +12,7 @@ SynthDef(\var_duty_saw, { arg bpmSaw=3, bpmCycle=2, freq1=100, freq2=50, atk=0.1
 	Out.ar(\out.ir(0), Pan2.ar(a*env, 0));
 }).add;
 )
+x = Synth(\var_duty_saw)
+x.set(\bpmCycle, 2)
+x.set(\bpmSaw, 3)
+x.set(\freq1, 100)
